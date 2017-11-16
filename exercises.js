@@ -141,6 +141,18 @@ console.log(stockCar);
    the value at `name`, and just the value at `age`.
  */
 
+var plainPerson = {
+
+};
+
+function buildPerson(person, nameString, age){
+  person.name = nameString;
+  person.age = age;
+  return person;
+}
+
+var completePerson = buildPerson(plainPerson, "Jessie", 31);
+console.log(completePerson);
 
 /*
 7. Display values of objects that are inside an array
@@ -167,6 +179,72 @@ console.log(stockCar);
             ...
  */
 
+var arrayOfObjects = [
+  {
+    id: 0,
+    date: "Monday Jan 25 2015 2:01 PM",
+    total: "279.38"
+  },
+  {
+    id: 1,
+    date: "Monday Jan 27 2015 11:31 AM",
+    total: "79.80"
+  },
+  {
+    id: 2,
+    date: "Monday Feb 1 2015 7:56 AM",
+    total: "15.62"
+  },
+  {
+    id: 3,
+    date: "Monday Feb 1 2015 9:43 AM",
+    total: "19.83"
+  },
+  {
+    id: 4,
+    date: "Monday Feb 1 2015 11:08 PM",
+    total: "56.69"
+  },
+  {
+    id: 5,
+    date: "Monday Feb 13 2015 10:22 AM",
+    total: "137.92"
+  },
+  {
+    id: 6,
+    date: "Monday Feb 14 2015 6:54 PM",
+    total: "938.65"
+  },
+  {
+    id: 7,
+    date: "Monday Feb 14 2015 7:17 PM",
+    total: "43.77"
+  },
+  {
+    id: 8,
+    date: "Monday Feb 14 2015 7:18 PM",
+    total: "28.54"
+  },
+  {
+    id: 9,
+    date: "Monday Feb 14 2015 7:18 PM",
+    total: "194.33"
+  }
+
+];
+
+function printOrders(orders){
+  for (var i = 0; i <orders.length; i++){
+    console.log("=====");
+    console.log("id: " + orders[i].id);
+    console.log("=====");
+    console.log(" purchase date: " + orders[i].date);
+    console.log("=====");
+    console.log(" purchase total:" + orders[i].total);
+  }
+}
+
+printOrders(arrayOfObjects);
 
 /*
 8. Addition with an object
@@ -180,6 +258,21 @@ console.log(stockCar);
         Invoke your function and pass in your object, store the result to a variable named sumObjResult and use `console.log` 
         to inspect your results.
 */
+
+var sumObj = {
+  a: 1,
+  b: 2,
+  result: undefined
+};
+
+function objectAddition(obj){
+  obj.result = obj.a + obj.b;
+  return obj;
+
+}
+
+var sumObjResult = objectAddition(sumObj);
+console.log(sumObjResult);
 
 
 /*
@@ -210,6 +303,16 @@ console.log(stockCar);
         plainBoxResult and use `console.log` to inspect your results.
  */
 
+function putInPlainBox(obj){
+  for(var i = 0; i < 10; i++){
+    var num = Math.floor((Math.random()*10)+1);
+  obj.contents.push(num);
+  }
+
+  return obj;
+}
+
+console.log(putInPlainBox(plainBox));
 
 /*
 11. Detecting transmission
@@ -268,3 +371,19 @@ console.log(stockCar);
         'Marifel, age 19, is riding dirty!'
         'Victor, age 19, is riding dirty!'
  */
+
+var passengerList = ['Jon', 'Jason', 'Tony', 'Joe', 'Jesse', 'Nigel', 'Kelli', 'Marifel', 'Victor'];
+
+var passengerAges = [19, 12, 21, 22, 16, 9, 19, 20, 15];
+
+function addPassengers(car, names, ages){
+  for(var i = 0; i<names.length; i++){
+    var rider = {};
+    car.passengers.push(buildPerson(rider, names[i], ages[i]));
+  }
+  return car;
+}
+
+console.log(addPassengers(stockCar, passengerList, passengerAges));
+
+
